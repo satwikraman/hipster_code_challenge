@@ -199,7 +199,7 @@ Keystroke events update `searchQuery` (instant display) but `debouncedSearch` (w
 
 ---
 
-## 5. Logging Strategy (Requirement 8)
+## 5. Logging Strategy
 
 `src/utils/logger.js` captures:
 
