@@ -5,9 +5,13 @@
 ```
 src/
 ├── api/             # API layer — fetch wrappers + localStorage fallback
+│   ├── apiUtils.js  # Shared constants, authHeaders, withTimeout, checkAuth, toApiDateTime
 │   ├── auth.js      # Login / logout
-│   ├── bookings.js  # CRUD + check-in / checkout
-│   └── client.js    # Token storage, localStorage helpers
+│   ├── bookings.js  # CRUD + check-in / checkout / cancel
+│   ├── client.js    # Token storage, localStorage helpers
+│   ├── services.js  # Fetch service categories
+│   ├── therapists.js# Fetch therapists (with availability params)
+│   └── users.js     # Search / get / create users
 ├── components/
 │   ├── calendar/    # Calendar grid and rendering
 │   │   ├── CalendarGrid.js    # Dual-axis virtualised grid shell
@@ -26,8 +30,6 @@ src/
 │   ├── auth/
 │   │   └── LoginCard.js       # Login form
 │   └── ErrorBoundary.js       # Functional error boundary (react-error-boundary)
-├── data/
-│   └── therapists.js          # Static therapist list (id, number, name, gender)
 ├── hooks/
 │   └── useBookingHandlers.js  # Custom hook — all booking state + CRUD callbacks
 ├── store/
@@ -35,11 +37,16 @@ src/
 │   ├── slices/
 │   │   ├── authSlice.js       # Authentication state
 │   │   ├── bookingsSlice.js   # Normalised bookings + async thunks
+│   │   ├── therapistsSlice.js # Therapist list + fetchTherapists thunk
+│   │   ├── servicesSlice.js   # Service category list + fetchServices thunk
 │   │   └── uiSlice.js         # Selected date, panel state, toast
 │   └── selectors/
-│       ├── authSelectors.js     # selectIsAuthenticated, selectAuthUser, selectAuthStatus, selectAuthError
-│       ├── bookingSelectors.js  # createSelector memoised selectors + factory
-│       └── uiSelectors.js       # selectSelectedDate, selectIsPanelOpen, etc.
+│       ├── authSelectors.js       # selectIsAuthenticated, selectAuthUser, selectAuthStatus, selectAuthError
+│       ├── bookingSelectors.js    # createSelector memoised selectors + factory
+│       ├── therapistSelectors.js  # selectTherapists
+│       ├── serviceSelectors.js    # selectServices
+│       └── uiSelectors.js         # selectSelectedDate, selectIsPanelOpen, etc.
+├── constants.js      # App-wide constants: BOOKING_STATUS enum, DEBOUNCE_MS, SNAP_MINUTES
 └── utils/
     ├── calendarUtils.js  # Shared calendar constants + pure helpers
     └── logger.js         # Structured logger (console + sessionStorage)
@@ -57,6 +64,8 @@ src/
 |---|---|
 | `authSlice` | `isAuthenticated`, `user`, `status`, `error` |
 | `bookingsSlice` | Normalised entities map, byTherapist index, async thunks |
+| `therapistsSlice` | `list` of therapists fetched from API per selected date, `status`, `error` |
+| `servicesSlice` | `list` of service categories fetched once on login, `status`, `error` |
 | `uiSlice` | `selectedDate`, `selectedBookingId`, `isPanelOpen`, `toast` |
 
 ### Normalised Bookings Store
@@ -207,18 +216,23 @@ Logs are printed to the browser console **and** persisted to `sessionStorage` ke
 
 ## 6. API Integration
 
-Base URL: `https://dev.natureland.hipster-virtual.com/api/v1`
+Base URL: `process.env.REACT_APP_API_BASE_URL` (falls back to `https://dev.natureland.hipster-virtual.com`)
 
 | Action | Method | Endpoint |
 |---|---|---|
 | Login | `POST` | `/login` (FormData) |
-| List bookings | `GET` | `/bookings/outlet/booking/list` |
-| Create booking | `POST` | `/bookings/create` (FormData) |
-| Update booking | `POST` | `/bookings/{id}` (FormData) |
-| Cancel booking | `POST` | `/bookings/item/cancel` (FormData) |
-| Check-in | `POST` | `/bookings/update/payment-status` |
-| Check-out | `POST` | `/bookings/update/payment-status` |
-| Delete | `DELETE` | `/bookings/destroy/{id}` |
+| List bookings | `GET` | `/api/v1/bookings/outlet/booking/list` |
+| Create booking | `POST` | `/api/v1/bookings/create` (FormData) |
+| Update booking | `POST` | `/api/v1/bookings/{id}` (FormData) |
+| Cancel booking | `POST` | `/api/v1/bookings/item/cancel` (FormData) |
+| Check-in | `POST` | `/api/v1/bookings/update/payment-status` |
+| Check-out | `POST` | `/api/v1/bookings/update/payment-status` |
+| Delete | `DELETE` | `/api/v1/bookings/destroy/{id}` |
+| List therapists | `GET` | `/api/v1/therapists` (with date + outlet params) |
+| List services | `GET` | `/api/v1/service-category` |
+| Search users | `GET` | `/api/v1/users?search=…` |
+| Get user | `GET` | `/api/v1/users/{id}` |
+| Create user | `POST` | `/api/v1/users/create` (FormData) |
 
 All API calls fall through to a `localStorage` layer if the network request fails, so the app works fully offline with seeded demo data.
 
@@ -228,23 +242,6 @@ All API calls fall through to a `localStorage` layer if the network request fail
 
 1. A single outlet (`outlet=1`, `company=1`) is used for this assessment.
 2. The Google reCAPTCHA bypass key (`key_pass`) from the assessment document is hardcoded in `auth.js`.
-3. Therapist list is static (from the assessment spec); a real system would fetch from `/therapists`.
-4. The `byTherapist` index in Redux uses the therapist IDs from the static list (`t1`–`t8`); API bookings are mapped by `therapistId` field.
+3. Therapist list is fetched from `GET /api/v1/therapists` on each date change; falls back to seeded demo data if no token or API fails.
+4. The `byTherapist` index in Redux uses dynamic therapist IDs returned by the API; bookings are mapped by the `therapistId` field.
 5. Dates in the API use `DD-MM-YYYY` format; the app stores and displays in ISO `YYYY-MM-DD`.
-
----
-
-## 8. Deployment
-
-```bash
-npm run build          # Production build → /build
-npx serve -s build     # Local preview
-
-# Vercel (recommended)
-npx vercel --prod
-
-# Netlify
-netlify deploy --prod --dir=build
-```
-
-Demo credentials: `react@hipster-inc.com` / `React@123`
