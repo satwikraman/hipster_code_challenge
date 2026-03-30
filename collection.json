@@ -1,0 +1,1699 @@
+{
+    "collection": {
+        "info": {
+            "_postman_id": "08daf3c0-ddc4-4bec-aa6a-d50cbaa9c5b3",
+            "name": "React API Final",
+            "description": "# 📄 Get started here\n\nThis template contains a boilerplate for documentation that you can quickly customize and reuse.\n\n## 🔖 How to use this template\n\n- Replace the content given brackets (()) with your API's details.\n- Tips are formatted in `codespan` - feel free to read and remove them.\n    \n\n---\n\n`Start with a brief overview of what your API offers.`\n\nThe ((product name)) provides many API products, tools, and resources that enable you to ((add product value here)).\n\n`You can also list the APIs you offer, link to the relevant pages, or do both in this section.`\n\n## **Getting started guide**\n\n`List the steps or points required to start using your APIs. Make sure to cover everything required to reach success with your API as quickly as possible.`\n\nTo start using the ((add APIs here)), you need to -\n\n`The points given below are from The Postman API's documentation. You can reference it to write your own getting started guide.`\n\n- You must use a valid API Key to send requests to the API endpoints. You can get your API key from Postman's [integrations dashboard](https://go.postman.co/settings/me/api-keys).\n- The API has [rate and usage limits](https://learning.postman.com/docs/developer/postman-api/postman-api-rate-limits/).\n- The API only responds to HTTPS-secured communications. Any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication\n\n`Add details on the authorization keys/tokens required, steps that cover how to get them, and the relevant error codes.`\n\nThe ((product name)) API uses ((add your API's authorization type)) for authentication.\n\n`The details given below are from the Postman API's documentation. You can reference it to write your own authentication section.`\n\nPostman uses API keys for authentication. You can generate a Postman API key in the [API keys](https://postman.postman.co/settings/me/api-keys) section of your Postman account settings.\n\nYou must include an API key in each request to the Postman API with the X-Api-Key request header.\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\n`Use this section to cover your APIs' terms of use. Include API limits, constraints, and relevant error codes, so consumers understand the permitted API usage and practices.`\n\n`The example given below is from The Postman API's documentation. Use it as a reference to write your APIs' terms of use.`\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 300 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://support.postman.com/hc/en-us/requests/new/).\n\n### **Need some help?**\n\n`Add links that customers can refer to whenever they need help.`\n\nIn case you have questions, go through our tutorials ((link to your video or help documentation here)). Or visit our FAQ page ((link to the relevant page)).\n\nOr you can check out our community forum, there’s a good chance our community has an answer for you. Visit our developer forum ((link to developer forum)) to review topics, ask questions, and learn from others.\n\n`You can also document or add links to libraries, code examples, and other resources needed to make a request.`",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+            "createdAt": "2026-03-22T13:39:15.000Z",
+            "updatedAt": "2026-03-22T13:45:13.000Z",
+            "lastUpdatedBy": "19902956",
+            "uid": "19902956-08daf3c0-ddc4-4bec-aa6a-d50cbaa9c5b3"
+        },
+        "item": [
+            {
+                "name": "Collections",
+                "item": [
+                    {
+                        "name": "Authenticate",
+                        "item": [
+                            {
+                                "name": "Login",
+                                "event": [
+                                    {
+                                        "listen": "test",
+                                        "script": {
+                                            "id": "770799fb-8107-445a-bb02-e8ce9030b211",
+                                            "exec": [
+                                                ""
+                                            ],
+                                            "type": "text/javascript",
+                                            "packages": {},
+                                            "requests": {}
+                                        }
+                                    }
+                                ],
+                                "id": "523f27cc-f407-48b1-a999-623e93cb3746",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "noauth"
+                                    },
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "formdata",
+                                        "formdata": [
+                                            {
+                                                "key": "email",
+                                                "value": "react@hipster-inc.com",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "password",
+                                                "value": "React@123",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "key_pass",
+                                                "value": "07ba959153fe7eec778361bf42079439",
+                                                "description": "Required",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/login",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "login"
+                                        ]
+                                    },
+                                    "description": "Creates a collection using the [Postman Collection v2 schema format](https://schema.postman.com/json/collection/v2.1.0/docs/index.html). Include a `collection` object in the request body that contains the following required properties:\n\n*   `info` — An **object** that contains the following properties:\n    *   `name` — A **string** value that contains the collection's name.\n    *   `schema` — A **string** that contains a URL to the collection's schema. For example, the `https://schema.getpostman.com/collection/v1` URL.\n*   `item` — An **object** that contains the HTTP request and response information.\n    *   `request` — An **object** that contains the collection's request information. For a complete list of values, refer to the `definitions.request` entry in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json). If you pass an empty object for this value, the system defaults to an untitled GET request.\n\n**Note:**\n\n*   For a complete list of available property values for this endpoint, use the following references available in the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json):\n    *   `info` object — Use the `definitions.info` entry.\n    *   `item` object — Use the `definitions.items` entry.\n*   For all other possible values, refer to the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json)."
+                                },
+                                "response": [
+                                    {
+                                        "id": "0f052556-e53d-4d47-bbff-2b4df86b8b74",
+                                        "name": "Successful Response",
+                                        "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                }
+                                            ],
+                                            "body": {
+                                                "mode": "raw",
+                                                "raw": "{\n    \"collection\": {\n        \"info\": {\n            \"name\": \"Test Collection\",\n            \"description\": \"This collection makes a request to the Postman Echo service to get a list of request headers sent by an HTTP client.\",\n            \"schema\": \"https://schema.getpostman.com/json/collection/v2.1.0/collection.json\"\n        },\n        \"item\": [\n            {\n                \"name\": \"Test GET Response\",\n                \"event\": [\n                    {\n                        \"listen\": \"test\",\n                        \"script\": {\n                            \"id\": \"7d2334fc-a84a-4c3d-b26c-7529afa4c0ae\",\n                            \"exec\": [\n                                \"pm.test(\\\"Status code is 200\\\", function () {\",\n                                \"    pm.response.to.have.status(200);\",\n                                \"});\"\n                                ],\n                            \"type\": \"text/javascript\"\n                            }\n                        }\n                    ],\n                \"request\": {\n                    \"url\": \"https://echo.getpostman.com/headers\",\n                    \"method\": \"GET\",\n                    \"header\": [\n                        {\n                            \"key\": \"Content-Type\",\n                            \"value\": \"application/json\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                                                "options": {
+                                                    "raw": {
+                                                        "language": "json"
+                                                    }
+                                                }
+                                            },
+                                            "url": {
+                                                "raw": "https://api.getpostman.com/collections",
+                                                "protocol": "https",
+                                                "host": [
+                                                    "api",
+                                                    "getpostman",
+                                                    "com"
+                                                ],
+                                                "path": [
+                                                    "collections"
+                                                ],
+                                                "query": [
+                                                    {
+                                                        "key": "workspace",
+                                                        "value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
+                                                        "description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+                                                        "disabled": true
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "status": "OK",
+                                        "code": 200,
+                                        "_postman_previewlanguage": "json",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json",
+                                                "name": "Content-Type",
+                                                "description": {
+                                                    "content": "",
+                                                    "type": "text/plain"
+                                                }
+                                            }
+                                        ],
+                                        "cookie": [],
+                                        "responseTime": null,
+                                        "body": "{\n    \"collection\": {\n        \"id\": \"12ece9e1-2abf-4edc-8e34-de66e74114d2\",\n        \"name\": \"Test Collection\",\n        \"uid\": \"12345678-12ece9e1-2abf-4edc-8e34-de66e74114d2\"\n    }\n}",
+                                        "createdAt": "2026-03-22T13:39:15.000Z",
+                                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                                        "uid": "19902956-0f052556-e53d-4d47-bbff-2b4df86b8b74"
+                                    },
+                                    {
+                                        "id": "14acc89c-a973-4f53-ab81-0b6143bf15fa",
+                                        "name": "Bad Request",
+                                        "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                }
+                                            ],
+                                            "body": {
+                                                "mode": "raw",
+                                                "raw": "{\n    \"collection\": {\n        \"info\": {\n            \"name\": \"Test Collection\",\n            \"description\": \"This collection makes a request to the Postman Echo service to get a list of request headers sent by an HTTP client.\",\n            \"schema\": \"https://schema.getpostman.com/json/collection/v2.1.0/collection.json\"\n        },\n        \"item\": [\n            {\n                \"name\": \"Test GET Response\",\n                \"event\": [\n                    {\n                        \"listen\": \"test\",\n                        \"script\": {\n                            \"id\": \"7d2334fc-a84a-4c3d-b26c-7529afa4c0ae\",\n                            \"exec\": [\n                                \"pm.test(\\\"Status code is 200\\\", function () {\",\n                                \"    pm.response.to.have.status(200);\",\n                                \"});\"\n                                ],\n                            \"type\": \"text/javascript\"\n                            }\n                        }\n                    ],\n                \"request\": {\n                    \"url\": \"https://echo.getpostman.com/headers\",\n                    \"method\": \"GET\",\n                    \"header\": [\n                        {\n                            \"key\": \"Content-Type\",\n                            \"value\": \"application/json\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                                                "options": {
+                                                    "raw": {
+                                                        "language": "json"
+                                                    }
+                                                }
+                                            },
+                                            "url": {
+                                                "raw": "https://api.getpostman.com/collections",
+                                                "protocol": "https",
+                                                "host": [
+                                                    "api",
+                                                    "getpostman",
+                                                    "com"
+                                                ],
+                                                "path": [
+                                                    "collections"
+                                                ],
+                                                "query": [
+                                                    {
+                                                        "key": "workspace",
+                                                        "value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
+                                                        "description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+                                                        "disabled": true
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "status": "Bad Request",
+                                        "code": 400,
+                                        "_postman_previewlanguage": "json",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json",
+                                                "name": "Content-Type",
+                                                "description": {
+                                                    "content": "",
+                                                    "type": "text/plain"
+                                                }
+                                            }
+                                        ],
+                                        "cookie": [],
+                                        "responseTime": null,
+                                        "body": "{\n    \"error\": {\n        \"name\": \"instanceFoundError\",\n        \"message\": \"The specified item already exists.\",\n        \"details\": {\n            \"item\": \"collection\",\n            \"id\": \"12ece9e1-2abf-4edc-8e34-de66e74114d2\"\n        }\n    }\n}",
+                                        "createdAt": "2026-03-22T13:39:15.000Z",
+                                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                                        "uid": "19902956-14acc89c-a973-4f53-ab81-0b6143bf15fa"
+                                    },
+                                    {
+                                        "id": "d6fae406-8e03-4dc0-b6eb-577d19fa3910",
+                                        "name": "Malformed Request",
+                                        "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json",
+                                                    "name": "Content-Type",
+                                                    "type": "text"
+                                                }
+                                            ],
+                                            "body": {
+                                                "mode": "raw",
+                                                "raw": "{\n    \"collection\": {\n        \"item\": [\n            {\n                \"name\": \"Test GET Response\",\n                \"event\": [\n                    {\n                        \"listen\": \"test\",\n                        \"script\": {\n                            \"id\": \"7d2334fc-a84a-4c3d-b26c-7529afa4c0ae\",\n                            \"exec\": [\n                                \"pm.test(\\\"Status code is 200\\\", function () {\",\n                                \"    pm.response.to.have.status(200);\",\n                                \"});\"\n                                ],\n                            \"type\": \"text/javascript\"\n                            }\n                        }\n                    ],\n                \"request\": {\n                    \"url\": \"https://echo.getpostman.com/headers\",\n                    \"method\": \"GET\",\n                    \"header\": [\n                        {\n                            \"key\": \"Content-Type\",\n                            \"value\": \"application/json\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                                                "options": {
+                                                    "raw": {
+                                                        "language": "json"
+                                                    }
+                                                }
+                                            },
+                                            "url": {
+                                                "raw": "https://api.getpostman.com/collections",
+                                                "protocol": "https",
+                                                "host": [
+                                                    "api",
+                                                    "getpostman",
+                                                    "com"
+                                                ],
+                                                "path": [
+                                                    "collections"
+                                                ],
+                                                "query": [
+                                                    {
+                                                        "key": "workspace",
+                                                        "value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
+                                                        "description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+                                                        "disabled": true
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "status": "Bad Request",
+                                        "code": 400,
+                                        "_postman_previewlanguage": "json",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json; charset=utf-8"
+                                            }
+                                        ],
+                                        "cookie": [],
+                                        "responseTime": null,
+                                        "body": "{\n    \"error\": {\n        \"name\": \"malformedRequestError\",\n        \"message\": \"Found 1 errors with the supplied collection.\",\n        \"details\": [\n            \": must have required property 'info'\"\n        ]\n    }\n}",
+                                        "createdAt": "2026-03-22T13:39:15.000Z",
+                                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                                        "uid": "19902956-d6fae406-8e03-4dc0-b6eb-577d19fa3910"
+                                    },
+                                    {
+                                        "id": "3af19ae0-ec49-439d-8b56-1391bef2ed6d",
+                                        "name": "Rate Limit Exceeded",
+                                        "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                }
+                                            ],
+                                            "body": {
+                                                "mode": "raw",
+                                                "raw": "{\n    \"collection\": {\n        \"item\": [\n            {\n                \"name\": \"Test GET Response\",\n                \"event\": [\n                    {\n                        \"listen\": \"test\",\n                        \"script\": {\n                            \"id\": \"7d2334fc-a84a-4c3d-b26c-7529afa4c0ae\",\n                            \"exec\": [\n                                \"pm.test(\\\"Status code is 200\\\", function () {\",\n                                \"    pm.response.to.have.status(200);\",\n                                \"});\"\n                                ],\n                            \"type\": \"text/javascript\"\n                            }\n                        }\n                    ],\n                \"request\": {\n                    \"url\": \"https://echo.getpostman.com/headers\",\n                    \"method\": \"GET\",\n                    \"header\": [\n                        {\n                            \"key\": \"Content-Type\",\n                            \"value\": \"application/json\"\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}",
+                                                "options": {
+                                                    "raw": {
+                                                        "language": "json"
+                                                    }
+                                                }
+                                            },
+                                            "url": {
+                                                "raw": "https://api.getpostman.com/collections",
+                                                "protocol": "https",
+                                                "host": [
+                                                    "api",
+                                                    "getpostman",
+                                                    "com"
+                                                ],
+                                                "path": [
+                                                    "collections"
+                                                ],
+                                                "query": [
+                                                    {
+                                                        "key": "workspace",
+                                                        "value": "1f0df51a-8658-4ee8-a2a1-d2567dfa09a9",
+                                                        "description": "Optional. A workspace ID in which to create the collection.\n\nIf you do not include this query parameter, the system creates the collection in your \"My Workspace\" workspace.",
+                                                        "disabled": true
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "status": "Too Many Requests",
+                                        "code": 429,
+                                        "_postman_previewlanguage": "json",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json",
+                                                "description": ""
+                                            }
+                                        ],
+                                        "cookie": [],
+                                        "responseTime": null,
+                                        "body": "{\n    \"error\": \"rateLimited\",\n    \"message\": \"Rate limit exceeded. Please retry after 1669048687\"\n}",
+                                        "createdAt": "2026-03-22T13:39:15.000Z",
+                                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                                        "uid": "19902956-3af19ae0-ec49-439d-8b56-1391bef2ed6d"
+                                    }
+                                ],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-523f27cc-f407-48b1-a999-623e93cb3746"
+                            }
+                        ],
+                        "id": "9da4fd63-1814-4f6a-b6a7-dd08cdf8e60a",
+                        "createdAt": "2026-03-22T13:39:15.000Z",
+                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                        "uid": "19902956-9da4fd63-1814-4f6a-b6a7-dd08cdf8e60a"
+                    },
+                    {
+                        "name": "User",
+                        "item": [
+                            {
+                                "name": "List",
+                                "id": "5bb9de88-44f2-4ea6-b438-7ab91827aa7a",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "If-None-Match",
+                                            "value": "\"4598f9f4f6de99cf8337e12c5c2b74aee7c8d349\"",
+                                            "type": "text"
+                                        }
+                                    ],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/users?pagination=1&daterange=2025-03-02 / 2026-04-08",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users"
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "pagination",
+                                                "value": "1",
+                                                "description": "Required"
+                                            },
+                                            {
+                                                "key": "daterange",
+                                                "value": "2025-03-02 / 2026-04-08"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-5bb9de88-44f2-4ea6-b438-7ab91827aa7a"
+                            },
+                            {
+                                "name": "Show User",
+                                "id": "31e90222-d994-45d0-9462-70ad4c981e33",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/users/709",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            "709"
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-31e90222-d994-45d0-9462-70ad4c981e33"
+                            },
+                            {
+                                "name": "Create",
+                                "id": "72942490-0b68-47d3-95ae-f2398d1de380",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "POST",
+                                    "header": [],
+                                    "body": {
+                                        "mode": "formdata",
+                                        "formdata": [
+                                            {
+                                                "key": "name",
+                                                "value": "First Name",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "lastname",
+                                                "value": "",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "email",
+                                                "value": "firstname+17@hipster-inc.com",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "contact_number",
+                                                "value": "+919988776626",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "gender",
+                                                "value": "male",
+                                                "description": "male,female",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "status",
+                                                "value": "1",
+                                                "description": "0,1",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "membership",
+                                                "value": "1",
+                                                "description": "0,1",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/users/create",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            "create"
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-72942490-0b68-47d3-95ae-f2398d1de380"
+                            }
+                        ],
+                        "id": "58d98aff-a2a0-46d6-9ac4-c25404217226",
+                        "description": "The `/me` endpoints let you manage information about the authenticated user.",
+                        "createdAt": "2026-03-22T13:39:15.000Z",
+                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                        "uid": "19902956-58d98aff-a2a0-46d6-9ac4-c25404217226"
+                    },
+                    {
+                        "name": "Therapist",
+                        "item": [
+                            {
+                                "name": "List",
+                                "id": "339a254c-a1e1-4287-9bb1-ca4ccfb6112f",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/therapists?availability=1&outlet=1&service_at=22-03-2026 16:45:00&services=1&status=1&pagination=0&panel=outlet&outlet_type=2&leave=0",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "therapists"
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "availability",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "key": "outlet",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "key": "service_at",
+                                                "value": "22-03-2026 16:45:00"
+                                            },
+                                            {
+                                                "key": "services",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "key": "status",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "key": "pagination",
+                                                "value": "0",
+                                                "description": "0,1 [Required]"
+                                            },
+                                            {
+                                                "key": "panel",
+                                                "value": "outlet",
+                                                "description": "outlet"
+                                            },
+                                            {
+                                                "key": "outlet_type",
+                                                "value": "2"
+                                            },
+                                            {
+                                                "key": "leave",
+                                                "value": "0",
+                                                "description": "0,1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-339a254c-a1e1-4287-9bb1-ca4ccfb6112f"
+                            },
+                            {
+                                "name": "Timing",
+                                "id": "469c0a81-5467-4af2-9df1-9b21490ae037",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/therapist-timings?start_date=22-03-2026&end_date=01-04-2026&outlet=1",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "therapist-timings"
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "start_date",
+                                                "value": "22-03-2026"
+                                            },
+                                            {
+                                                "key": "end_date",
+                                                "value": "01-04-2026"
+                                            },
+                                            {
+                                                "key": "user",
+                                                "value": "62",
+                                                "description": "Therapist ID to check time",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "outlet",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-469c0a81-5467-4af2-9df1-9b21490ae037"
+                            }
+                        ],
+                        "id": "346e7d84-03cf-4801-904f-85e645d4ec1f",
+                        "description": "The `/me` endpoints let you manage information about the authenticated user.",
+                        "createdAt": "2026-03-22T13:39:15.000Z",
+                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                        "uid": "19902956-346e7d84-03cf-4801-904f-85e645d4ec1f"
+                    },
+                    {
+                        "name": "Service Category",
+                        "item": [
+                            {
+                                "name": "Service List",
+                                "id": "e7a44c97-6593-4593-be20-a93f4bb97f50",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/service-category?outlet_type=2&outlet=1&pagination=0&panel=outlet",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "service-category"
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "search_text",
+                                                "value": "",
+                                                "description": "OPTIONAL",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "outlet_type",
+                                                "value": "2",
+                                                "description": "OPTIONAL (1, 2)"
+                                            },
+                                            {
+                                                "key": "outlet",
+                                                "value": "1",
+                                                "description": "OPTIONAL"
+                                            },
+                                            {
+                                                "key": "status",
+                                                "value": "1",
+                                                "description": "OPTIONAL (0, 1)",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "therapist",
+                                                "value": "517",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "pagination",
+                                                "value": "0",
+                                                "description": "REQUIRED (0, 1)"
+                                            },
+                                            {
+                                                "key": "panel",
+                                                "value": "outlet",
+                                                "description": "outlet"
+                                            },
+                                            {
+                                                "key": "service_at",
+                                                "value": "22-04-2026 19:00:00",
+                                                "disabled": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-e7a44c97-6593-4593-be20-a93f4bb97f50"
+                            }
+                        ],
+                        "id": "acc99025-cf28-4411-8443-b808ef368600",
+                        "createdAt": "2026-03-22T13:39:15.000Z",
+                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                        "uid": "19902956-acc99025-cf28-4411-8443-b808ef368600"
+                    },
+                    {
+                        "name": "Booking",
+                        "item": [
+                            {
+                                "name": "List",
+                                "id": "f2c54a52-8c9b-4350-bc50-19dadfecbce8",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/bookings/outlet/booking/list?pagination=1&daterange=10-03-2026 / 22-03-2026&outlet=1&panel=outlet&view_type=calendar",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "bookings",
+                                            "outlet",
+                                            "booking",
+                                            "list"
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "therapist",
+                                                "value": "435",
+                                                "description": "OPTIONAL",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "service",
+                                                "value": "",
+                                                "description": "OPTIONAL",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "per_page",
+                                                "value": "5",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "booking",
+                                                "value": "3371",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "status",
+                                                "value": "Confirmed",
+                                                "description": "Confirmed, Check-in (In Progress), Completed, Cancelled",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "pagination",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "key": "daterange",
+                                                "value": "10-03-2026 / 22-03-2026"
+                                            },
+                                            {
+                                                "key": "outlet",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "key": "panel",
+                                                "value": "outlet"
+                                            },
+                                            {
+                                                "key": "view_type",
+                                                "value": "calendar"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-f2c54a52-8c9b-4350-bc50-19dadfecbce8"
+                            },
+                            {
+                                "name": "Show",
+                                "id": "edf2363e-58a0-466d-8725-43e037e54ddd",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/bookings/booking-details/205468",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "bookings",
+                                            "booking-details",
+                                            "205468"
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-edf2363e-58a0-466d-8725-43e037e54ddd"
+                            },
+                            {
+                                "name": "Create - Outlet Panel",
+                                "id": "a385dc0b-f7f9-4c0c-a819-453bd2aae43d",
+                                "protocolProfileBehavior": {
+                                    "disabledSystemHeaders": {},
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "type": "text",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "type": "text"
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "formdata",
+                                        "formdata": [
+                                            {
+                                                "key": "company",
+                                                "value": "1",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "outlet",
+                                                "value": "1",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "outlet_type",
+                                                "value": "2",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "booking_type",
+                                                "value": "1",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "customer",
+                                                "value": "980",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "created_by",
+                                                "value": "229061",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "items",
+                                                "value": "[{\"service\":34,\"start_time\":\"19:15\",\"end_time\":\"20:15\",\"duration\":60,\"therapist\":441,\"requested_person\":0,\"price\":\"77.00\",\"quantity\":\"1\",\"service_request\":\"\",\"commission\":null,\"customer_name\":\"check\",\"primary\":1,\"item_number\":1,\"room_segments\":[{\"room_id\":223,\"item_type\":\"single-bed\",\"meta_service\":null,\"start_time\":\"19:15\",\"end_time\":\"20:15\",\"duration\":60,\"priority\":1}]}]",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "currency",
+                                                "value": "SGD",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "source",
+                                                "value": "WhatsApp",
+                                                "description": "Walk-in, WhatsApp, or By Phone",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "payment_type",
+                                                "value": "payatstore",
+                                                "description": "payatstore, online",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "service_at",
+                                                "value": "22-03-2026 19:15",
+                                                "description": "SGT",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "note",
+                                                "value": "Test",
+                                                "description": "OPTIONAL",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "membership",
+                                                "value": "0",
+                                                "description": "0, 1",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "panel",
+                                                "value": "outlet",
+                                                "description": "outlet",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "type",
+                                                "value": "manual",
+                                                "description": "manual, auto",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/bookings/create",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "bookings",
+                                            "create"
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-a385dc0b-f7f9-4c0c-a819-453bd2aae43d"
+                            },
+                            {
+                                "name": "Edit",
+                                "id": "a71faafe-92c0-4e67-8ef4-6f7444d5ffcd",
+                                "protocolProfileBehavior": {
+                                    "disabledSystemHeaders": {},
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "type": "text",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "type": "text"
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "formdata",
+                                        "formdata": [
+                                            {
+                                                "key": "company",
+                                                "value": "1",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "outlet",
+                                                "value": "1",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "items",
+                                                "value": "[{\"id\":182817,\"service\":34,\"customer_name\":\"check\",\"start_time\":\"17:15\",\"end_time\":\"18:15\",\"duration\":60,\"therapist\":441,\"room_segments\":[{\"room_id\":223,\"item_type\":\"Sofa A (820, 5 Seats)\",\"meta_service\":null,\"start_time\":\"17:15\",\"end_time\":\"18:15\",\"duration\":60,\"priority\":1}],\"requested_person\":0,\"requested_room\":0,\"isMemberRateApplied\":false,\"isMembershipApplied\":false,\"price\":\"77.00\",\"quantity\":\"1\",\"service_request\":\"\",\"commission\":{\"tier\":null,\"title\":null,\"rate\":\"0.00\"},\"primary\":1,\"item_number\":1,\"parent_booking_item_id\":null,\"cross_day_booking_item\":null,\"start_date\":\"22-03-2026\",\"end_date\":\"22-03-2026\",\"is_calendar_expansion\":0,\"guest_checkin_id\":null,\"guest_checkin_name\":null}]",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "currency",
+                                                "value": "SGD",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "source",
+                                                "value": "whatsapp",
+                                                "description": "walkin, phone, whatsapp",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "payment_type",
+                                                "value": "payatstore",
+                                                "description": "payatstore, online",
+                                                "type": "text",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "payment_status",
+                                                "value": "1",
+                                                "type": "text",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "service_at",
+                                                "value": "22-03-2026 19:15",
+                                                "description": "SGT",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "customer",
+                                                "value": "980",
+                                                "description": "Required",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "customer_name",
+                                                "value": "Yashika G",
+                                                "type": "text",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "customer_lastname",
+                                                "value": "Yeo",
+                                                "type": "text",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "customer_email",
+                                                "value": "manish@gmail.com",
+                                                "type": "text",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "mobile_number",
+                                                "value": "123456789",
+                                                "type": "text",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "panel",
+                                                "value": "outlet",
+                                                "description": "outlet",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "source",
+                                                "value": "Walk-in",
+                                                "type": "text",
+                                                "description": "Walk-in, WhatsApp, or By Phone"
+                                            },
+                                            {
+                                                "key": "updated_by",
+                                                "value": "229061",
+                                                "type": "text",
+                                                "description": "Logged In User ID"
+                                            },
+                                            {
+                                                "key": "booking_type",
+                                                "value": "1",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "membership",
+                                                "value": "0",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "note",
+                                                "value": "New note",
+                                                "type": "text",
+                                                "uuid": "b83c0e95-463c-4e36-a6b3-e9825bfa2d24"
+                                            }
+                                        ]
+                                    },
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/bookings/205490",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "bookings",
+                                            "205490"
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-a71faafe-92c0-4e67-8ef4-6f7444d5ffcd"
+                            },
+                            {
+                                "name": "Update Status",
+                                "id": "042e684a-34bc-4d03-bd64-9b7f4b05dc1e",
+                                "protocolProfileBehavior": {
+                                    "disabledSystemHeaders": {},
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "type": "text",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "type": "text"
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "formdata",
+                                        "formdata": [
+                                            {
+                                                "key": "company",
+                                                "value": "1",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "id",
+                                                "value": "205494",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "status",
+                                                "value": "Confirmed",
+                                                "type": "text",
+                                                "description": "Confirmed, Check-in (In Progress), Cancelled"
+                                            },
+                                            {
+                                                "key": "panel",
+                                                "value": "outlet",
+                                                "description": "outlet",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "outlet_type",
+                                                "value": "1",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/bookings/update/payment-status",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "bookings",
+                                            "update",
+                                            "payment-status"
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-042e684a-34bc-4d03-bd64-9b7f4b05dc1e"
+                            },
+                            {
+                                "name": "Cancel",
+                                "id": "56e9a704-499f-4712-9832-c87eab72b1ce",
+                                "protocolProfileBehavior": {
+                                    "disabledSystemHeaders": {},
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "type": "text",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "type": "text"
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "formdata",
+                                        "formdata": [
+                                            {
+                                                "key": "company",
+                                                "value": "1",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "id",
+                                                "value": "205494",
+                                                "description": "Booking ID",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "type",
+                                                "value": "normal",
+                                                "description": "normal, no-show",
+                                                "type": "text"
+                                            },
+                                            {
+                                                "key": "panel",
+                                                "value": "outlet",
+                                                "description": "outlet",
+                                                "type": "text"
+                                            }
+                                        ]
+                                    },
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/bookings/item/cancel",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "bookings",
+                                            "item",
+                                            "cancel"
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-56e9a704-499f-4712-9832-c87eab72b1ce"
+                            },
+                            {
+                                "name": "Delete",
+                                "id": "039b15aa-ad0d-40b7-8051-78e0539e55c9",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "DELETE",
+                                    "header": [],
+                                    "body": {
+                                        "mode": "formdata",
+                                        "formdata": []
+                                    },
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/bookings/destroy/205494",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "bookings",
+                                            "destroy",
+                                            "205494"
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-039b15aa-ad0d-40b7-8051-78e0539e55c9"
+                            }
+                        ],
+                        "id": "2b616ea9-d041-44f1-85ee-1f97c5855c3d",
+                        "createdAt": "2026-03-22T13:39:15.000Z",
+                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                        "uid": "19902956-2b616ea9-d041-44f1-85ee-1f97c5855c3d"
+                    },
+                    {
+                        "name": "Room",
+                        "item": [
+                            {
+                                "name": "List",
+                                "id": "6eeb613b-5df3-45de-adbc-e16010ed7aa0",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "type": "text"
+                                        }
+                                    ],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/room-bookings/outlet/1?date=07-03-2026&panel=outlet&duration=60",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "room-bookings",
+                                            "outlet",
+                                            "1"
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "date",
+                                                "value": "07-03-2026",
+                                                "description": "Required"
+                                            },
+                                            {
+                                                "key": "panel",
+                                                "value": "outlet"
+                                            },
+                                            {
+                                                "key": "duration",
+                                                "value": "60"
+                                            },
+                                            {
+                                                "key": "service_at",
+                                                "value": "07-03-2026 07:30",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "pagination",
+                                                "value": "0",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "availability",
+                                                "value": "1",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "user_id",
+                                                "value": "6",
+                                                "disabled": true
+                                            },
+                                            {
+                                                "key": "service_id",
+                                                "value": "13",
+                                                "disabled": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-6eeb613b-5df3-45de-adbc-e16010ed7aa0"
+                            }
+                        ],
+                        "id": "0b1efaef-4c34-465a-ba0b-df7faceb5d0a",
+                        "createdAt": "2026-03-22T13:39:15.000Z",
+                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                        "uid": "19902956-0b1efaef-4c34-465a-ba0b-df7faceb5d0a"
+                    },
+                    {
+                        "name": "Outlet Timing",
+                        "item": [
+                            {
+                                "name": "List",
+                                "id": "4420a78e-3596-4de7-989b-9e9ea3f23210",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/outlet-timings?outlet=1&start_date=19-03-2026&end_date=31-03-2026",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "outlet-timings"
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "outlet",
+                                                "value": "1",
+                                                "description": "Optional"
+                                            },
+                                            {
+                                                "key": "start_date",
+                                                "value": "19-03-2026",
+                                                "description": "Required"
+                                            },
+                                            {
+                                                "key": "end_date",
+                                                "value": "31-03-2026",
+                                                "description": "Required"
+                                            },
+                                            {
+                                                "key": "off",
+                                                "value": "0",
+                                                "description": "Optional",
+                                                "disabled": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-4420a78e-3596-4de7-989b-9e9ea3f23210"
+                            },
+                            {
+                                "name": "List - Multiple Timings",
+                                "id": "baf99a87-ee3b-4f37-b371-2ea0794c71be",
+                                "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                },
+                                "request": {
+                                    "auth": {
+                                        "type": "bearer",
+                                        "bearer": [
+                                            {
+                                                "key": "token",
+                                                "value": "{{token}}",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "method": "GET",
+                                    "header": [],
+                                    "url": {
+                                        "raw": "{{BASE_URL}}/api/v1/outlet-timings/new?outlet=1&start_date=01-04-2026&end_date=01-07-2026",
+                                        "host": [
+                                            "{{BASE_URL}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "outlet-timings",
+                                            "new"
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "outlet",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "key": "start_date",
+                                                "value": "01-04-2026"
+                                            },
+                                            {
+                                                "key": "end_date",
+                                                "value": "01-07-2026"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": [],
+                                "createdAt": "2026-03-22T13:39:15.000Z",
+                                "updatedAt": "2026-03-22T13:39:15.000Z",
+                                "uid": "19902956-baf99a87-ee3b-4f37-b371-2ea0794c71be"
+                            }
+                        ],
+                        "id": "0e338328-053a-4292-b58c-143e9cb0170c",
+                        "createdAt": "2026-03-22T13:39:15.000Z",
+                        "updatedAt": "2026-03-22T13:39:15.000Z",
+                        "uid": "19902956-0e338328-053a-4292-b58c-143e9cb0170c"
+                    }
+                ],
+                "id": "0b16e627-07d0-4b38-8f26-ae7f59a6447b",
+                "description": "The `/collections` endpoints let you manage your [collections](https://learning.postman.com/docs/sending-requests/intro-to-collections/).",
+                "event": [
+                    {
+                        "listen": "prerequest",
+                        "script": {
+                            "type": "text/javascript",
+                            "packages": {},
+                            "requests": {},
+                            "exec": [
+                                ""
+                            ],
+                            "id": "35fa8f6d-96dc-477b-b19c-13c1108b3880"
+                        }
+                    },
+                    {
+                        "listen": "test",
+                        "script": {
+                            "type": "text/javascript",
+                            "packages": {},
+                            "requests": {},
+                            "exec": [
+                                ""
+                            ],
+                            "id": "2fca74a2-c1f9-42ec-a715-e94ccd08666a"
+                        }
+                    }
+                ],
+                "createdAt": "2026-03-22T13:39:15.000Z",
+                "updatedAt": "2026-03-22T13:39:15.000Z",
+                "uid": "19902956-0b16e627-07d0-4b38-8f26-ae7f59a6447b"
+            }
+        ],
+        "auth": {
+            "type": "apikey",
+            "apikey": [
+                {
+                    "key": "key",
+                    "value": "X-API-Key",
+                    "type": "string"
+                },
+                {
+                    "key": "value",
+                    "value": "{{token}}",
+                    "type": "string"
+                }
+            ]
+        },
+        "event": [
+            {
+                "listen": "prerequest",
+                "script": {
+                    "id": "624b1594-38b4-4670-9003-38e28c2a578e",
+                    "type": "text/javascript",
+                    "requests": {},
+                    "exec": [
+                        ""
+                    ]
+                }
+            },
+            {
+                "listen": "test",
+                "script": {
+                    "id": "2f98e579-f5c7-4891-911c-2ddcb02006d8",
+                    "type": "text/javascript",
+                    "requests": {},
+                    "exec": [
+                        ""
+                    ]
+                }
+            }
+        ],
+        "variable": [
+            {
+                "key": "token",
+                "value": ""
+            },
+            {
+                "key": "BASE_URL",
+                "value": ""
+            }
+        ]
+    }
+}
