@@ -6,7 +6,7 @@ import { DEBOUNCE_MS, BOOKING_STATUS } from '../../constants';
 const toLocalInput = (isoStr) => {
     if (!isoStr) return '';
     const d = new Date(isoStr);
-    if (isNaN(d.getTime())) return '';
+    if (Number.isNaN(d.getTime())) return '';
     const pad = (n) => String(n).padStart(2, '0');
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
 };
@@ -315,11 +315,6 @@ const BookingPanel = ({ booking, draftBooking, therapists = [], services = [], o
                                 Checkout
                             </button>
                         )}
-                        {isCompleted && (
-                            <button type="button" className="btn-panel-action action-view-sale">
-                                View Sale
-                            </button>
-                        )}
                     </div>
                 )}
 
@@ -430,20 +425,6 @@ const BookingPanel = ({ booking, draftBooking, therapists = [], services = [], o
                         {serviceName && (
                             <div className="svc-section-header">
                                 <span className="svc-name">{serviceName}</span>
-                                <div className="svc-section-icons">
-                                    {/* Chevron down */}
-                                    <button className="svc-icon-btn" type="button" title="Expand">
-                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M3 5l4 4 4-4" />
-                                        </svg>
-                                    </button>
-                                    {/* Trash icon */}
-                                    <button className="svc-icon-btn" type="button" title="Remove service">
-                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M2 3.5h10M5 3.5V2.5a.5.5 0 01.5-.5h3a.5.5 0 01.5.5v1M11.5 3.5l-.7 8a.5.5 0 01-.5.5H3.7a.5.5 0 01-.5-.5l-.7-8" />
-                                        </svg>
-                                    </button>
-                                </div>
                             </div>
                         )}
                         {therapist && (
@@ -457,14 +438,6 @@ const BookingPanel = ({ booking, draftBooking, therapists = [], services = [], o
                                     <path d="M4 8l3 3 5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                                 <span className="svc-tag">Requested Therapist</span>
-                                {/* Info icon */}
-                                <button className="svc-icon-btn" type="button" title="Info" style={{ fontSize: '13px', color: '#9ca3af' }}>ⓘ</button>
-                                {/* Trash icon */}
-                                <button className="svc-icon-btn" type="button" title="Remove therapist">
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M2 3.5h10M5 3.5V2.5a.5.5 0 01.5-.5h3a.5.5 0 01.5.5v1M11.5 3.5l-.7 8a.5.5 0 01-.5.5H3.7a.5.5 0 01-.5-.5l-.7-8" />
-                                    </svg>
-                                </button>
                             </div>
                         )}
                         {duration !== null && (
@@ -479,25 +452,6 @@ const BookingPanel = ({ booking, draftBooking, therapists = [], services = [], o
                                 )}
                             </div>
                         )}
-                        {booking.room && (
-                            <div className="svc-detail-row">
-                                <span className="svc-key" style={{ fontStyle: 'italic' }}>Using:</span>
-                                <span className="svc-val">{booking.room}</span>
-                            </div>
-                        )}
-                        {booking.requests && (
-                            <div className="svc-detail-row">
-                                <span className="svc-key" style={{ fontStyle: 'italic' }}>Select request(s)</span>
-                                <span className="svc-val">{booking.requests}</span>
-                            </div>
-                        )}
-                    </div>
-                )}
-
-                {/* ── Notes box (view mode only) ── */}
-                {booking && !editMode && booking.notes && (
-                    <div className="panel-notes-box">
-                        {booking.notes}
                     </div>
                 )}
 
@@ -580,30 +534,10 @@ const BookingPanel = ({ booking, draftBooking, therapists = [], services = [], o
                     )}
                 </form>
 
-                {/* ── Booking details audit trail (view mode only) ── */}
+                {/* ── Booking details (view mode only) ── */}
                 {booking && !editMode && (
                     <div className="panel-booking-details">
                         <div className="bd-heading">Booking Details</div>
-                        <div className="bd-row">
-                            <span className="bd-key">Booked on:</span>
-                            <span className="bd-val">{booking.bookedOn || '—'}</span>
-                        </div>
-                        <div className="bd-row">
-                            <span className="bd-key">Booked by:</span>
-                            <span className="bd-val">{booking.bookedBy || booking.clientName || '—'}</span>
-                        </div>
-                        {isCancelled && (
-                            <>
-                                <div className="bd-row">
-                                    <span className="bd-key">Canceled on:</span>
-                                    <span className="bd-val">{booking.canceledOn || '—'}</span>
-                                </div>
-                                <div className="bd-row">
-                                    <span className="bd-key">Canceled by:</span>
-                                    <span className="bd-val">{booking.canceledBy || '—'}</span>
-                                </div>
-                            </>
-                        )}
                         <div className="bd-row">
                             <span className="bd-key">Source:</span>
                             <span className="bd-val">{booking.source || 'By Phone'}</span>

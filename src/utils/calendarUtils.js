@@ -8,14 +8,14 @@ export const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
 
 export const getMinutesSinceStart = (iso) => {
     const d = new Date(iso);
-    if (isNaN(d.getTime())) return 0;
+    if (Number.isNaN(d.getTime())) return 0;
     const minutes = d.getHours() * 60 + d.getMinutes();
     return clamp(minutes - DATE_START_HOUR * 60, 0, BUSINESS_MINUTES);
 };
 
 export const formatTime = (iso) => {
     const d = new Date(iso);
-    if (isNaN(d.getTime())) return '';
+    if (Number.isNaN(d.getTime())) return '';
     return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 };
 
