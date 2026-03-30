@@ -94,7 +94,7 @@ const bookings = useSelector(state => selectBookingsForTherapist(state, therapis
 
 ## 3. Performance Strategy
 
-### 3.1 Virtual Rendering (Requirement 2 & 9)
+### 3.1 Virtual Rendering
 
 `CalendarGrid` implements **dual-axis virtualisation**:
 
@@ -238,7 +238,72 @@ All API calls fall through to a `localStorage` layer if the network request fail
 
 ---
 
-## 7. Assumptions
+## 7. Key Technical Decisions & Trade-offs
+
+### 1. Redux Toolkit over local state
+**Chose:** Normalized entity store with a `byTherapist` index alongside the main `entities` map.
+
+**Why:** The calendar renders N columns simultaneously, each needing its own booking list. A flat array would require every column to filter the full list on every update — O(N×M). The dual-index gives O(1) per-column access and means a booking update in column 1 doesn't re-render columns 2–8.
+
+**Trade-off:** More boilerplate in the slice (maintaining two structures on create/update/delete/reschedule). Worth it at scale; overkill for 8 therapists.
+
+---
+
+### 2. Dual-axis virtual rendering
+**Chose:** Custom virtual scroll (no library) for both horizontal columns and vertical booking blocks.
+
+**Why:** At 200 therapists × full-day bookings, naively mounting everything would be ~1600+ DOM nodes. The virtualizer keeps it to ~10 columns × ~5 visible blocks = ~50 nodes at any time.
+
+**Trade-off:** Significant complexity in `CalendarGrid` and `TherapistColumn`. An off-the-shelf virtualizer (react-virtual, react-window) would have been simpler but harder to integrate with the drag-drop overlay and sticky header.
+
+---
+
+### 3. localStorage fallback for all API calls
+**Chose:** Every API function silently falls back to seeded demo data on failure or missing token.
+
+**Why:** Demo-ability. The app works fully without a live backend — interviewers can interact with it without credentials.
+
+**Trade-off:** API failures are invisible to the user. In production this would be a bug; here it's intentional. Also means the app never surfaces "network error" states — it always looks healthy.
+
+---
+
+### 4. `React.lazy` only for panel and modal
+**Chose:** Code-split `BookingPanel` and `CancelBookingModal`, but not the calendar components.
+
+**Why:** The calendar grid is always visible on load — lazy-loading it would cause a visible layout shift. The panel and modal are opened on user action, so the async chunk fetch is hidden behind the interaction delay.
+
+**Trade-off:** The main bundle still includes all calendar code. A more aggressive split (per-route) isn't applicable here since it's a single-page app with no routes.
+
+---
+
+### 5. `bookingsRef` pattern for drag handlers
+**Chose:** Store bookings in a ref (`bookingsRef.current`) and keep it current via a `useEffect`, rather than including `bookings` in `handleDropBooking`'s dependency array.
+
+**Why:** `handleDropBooking` is passed down through `CalendarGrid` → `TherapistColumn` → `BookingBlock`. Including `bookings` in its deps would recreate the function on every booking change, busting `React.memo` on every child on every update — defeating the entire optimization.
+
+**Trade-off:** Non-standard pattern; harder to read. The ref update is synchronous with the render cycle so it's safe, but it requires understanding *why* it's there.
+
+---
+
+### 6. API constants centralized, not environment-driven (mostly)
+**Chose:** `OUTLET_ID`, `COMPANY_ID`, `OUTLET_TYPE` etc. are hardcoded constants in `apiUtils.js`. Only the base URL reads from an env var.
+
+**Why:** This is a single-outlet assessment app. There's no multi-tenancy requirement. Env vars for every constant would add configuration overhead with no benefit.
+
+**Trade-off:** Changing outlet/company requires a code change, not a config change. Acceptable for the scope; wrong for a real SaaS product.
+
+---
+
+### 7. Phone validation locked to Indian format
+**Chose:** Regex `/^[6-9]\d{9}$/` — 10-digit Indian mobile numbers only.
+
+**Why:** The backend and business context implied a specific regional market. The assessment spec didn't require international support.
+
+**Trade-off:** International users are rejected. A real product would use a library like `libphonenumber` with country-code selection.
+
+---
+
+## 8. Assumptions
 
 1. A single outlet (`outlet=1`, `company=1`) is used for this assessment.
 2. The Google reCAPTCHA bypass key (`key_pass`) from the assessment document is hardcoded in `auth.js`.
